@@ -4,7 +4,7 @@ Project Edmund is an "Assisted AI" program used for the betterment of its' user.
 
 # Current Situation #
 * Week1: Created A Daily Greeting as well as a development environment in VS2017.
-* Week2: To create the Sarcasm Level.
+* Week2: Created Sarcasm Statements, added early implementation capabilites. Addded random chance.
 * Week3: To create the TextToSpeech Functionality.
 * Week4: To create the Response Functionality.
 * Week5: To create the integrated Emergency Aid system.
@@ -28,4 +28,4 @@ Project Edmund is an "Assisted AI" program used for the betterment of its' user.
 * a Standard C++ IDE.
 
 # Contact #
-* TBA
+* arronpontbriand @ gmail

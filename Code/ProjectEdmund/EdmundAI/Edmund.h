@@ -13,7 +13,7 @@ public:
 	Edmund();
 
 	//Lighten the mood with snarky comments.
-	int SarcasmLevel(int level);
+	string SarcasmStatement(int level);
 
 	//Used for better visualizing what the user needs to do in order to help someone.
 	string EmergencyAid(const string& inquery, const string& response);
@@ -38,6 +38,8 @@ private:
 
 	string question = "Null";
 	string answer = "Null";
+
+	string statement;
 
 	int level;
 	int rGen;
