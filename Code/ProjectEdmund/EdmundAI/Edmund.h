@@ -22,7 +22,7 @@ public:
 	string Response(const string& question, const string& answer);
 
 	//Once on initialization.
-	void DailyGreeting();
+	string DailyGreeting(string greeting);
 
 	//Check the computer system stats. 
 	//Eventually the Malware checking agent.
@@ -30,7 +30,9 @@ public:
 
 	//Audio return for a simple text to speech.
 	//If I have time I want my own Audio speech.
-	void TextToSpeech();
+	int TextToSpeech(string output);
+
+	wstring Conversion(const string& output);
 
 private:
 	string inquery = "Null";
@@ -39,7 +41,8 @@ private:
 	string question = "Null";
 	string answer = "Null";
 
-	string statement;
+	string greeting;
+	wstring output;
 
 	int level;
 	int rGen;

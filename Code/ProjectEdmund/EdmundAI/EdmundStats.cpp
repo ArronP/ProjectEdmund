@@ -1,4 +1,11 @@
 #include "Edmund.h"
+#include <atlbase.h>
+//You may derive a class from CComModule and use it if you want to override something,
+//but do not change the name of _Module
+extern CComModule _Module;
+#include <atlcom.h>
+#include <atlconv.h>
+#include <sapi.h>
 #include <iostream>
 #include <random>
 #include <chrono>
@@ -10,20 +17,24 @@ Edmund::Edmund() {
 
 }
 
-void Edmund::DailyGreeting() {
+string Edmund::DailyGreeting(string greeting) {
 	//This states this once on program initialization. 
 	//In Gen 2 I will introduce server side information and saving current time on initialization.
+	time_t now = time(0);
+
 	string user = "Arron";
 	string currDay = "Thursday";
 	string currTime = "3:20PM";
+	greeting = "Hello " + user + ". \n"
+		+ "it's currently " + asctime(localtime(&now));
 
 	// current date/time based on current system
 	//FIXME: Update time using custom formatting EX:(3:20pm on the 22nd of Thursday.) 
-	time_t now = time(0);
 
-	std::cout 
-		<< "Hello " << user <<". \n" 
-		<< "it's currently " << asctime (localtime(&now)) << endl; //Time using c++98.
+	std::cout << greeting << endl; //Time using c++98.
+	TextToSpeech(greeting);
+
+	return greeting;
 
 }
 
@@ -80,4 +91,36 @@ string Edmund::SarcasmStatement(int level) { //Gen 2. Rename to Angertounge (Com
 	std::cout << statement << endl;
 
 	return statement;
+}
+
+wstring Edmund::Conversion(const string& output) {
+	int len;
+	int slength = (int)output.length() + 1;
+	len = MultiByteToWideChar(CP_ACP, 0, output.c_str(), slength, 0, 0);
+	wchar_t* buf = new wchar_t[len];
+	MultiByteToWideChar(CP_ACP, 0, output.c_str(), slength, buf, len);
+	std::wstring r(buf);
+	delete[] buf;
+	return r;
+} //For use with converting string to WSstring and WString to LPCWSTR.
+
+int Edmund::TextToSpeech(string output) {
+	wstring stemp = Conversion(output);
+	LPCWSTR result = stemp.c_str();
+
+	ISpVoice * pVoice = NULL;
+
+	if (FAILED(::CoInitialize(NULL)))
+		return FALSE;
+
+	HRESULT hr = CoCreateInstance(CLSID_SpVoice, NULL, CLSCTX_ALL, IID_ISpVoice, (void **)&pVoice);
+	if (SUCCEEDED(hr))
+	{
+		hr = pVoice->Speak(result, 0, NULL); //FIXME: Convert String type in order to speak 'Output'.
+
+		pVoice->Release();
+		pVoice = NULL;
+	}
+	::CoUninitialize();
+	return TRUE;
 }
