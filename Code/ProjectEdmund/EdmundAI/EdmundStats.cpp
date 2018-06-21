@@ -12,6 +12,7 @@ extern CComModule _Module;
 #include <ctime>
 #include <string>
 #include <vector>
+using namespace std;
 #pragma warning(disable : 4996) //Do I have any alternatives besides disabling the warning?
 Edmund::Edmund() {
 
@@ -91,6 +92,50 @@ string Edmund::SarcasmStatement(int level) { //Gen 2. Rename to Angertounge (Com
 	std::cout << statement << endl;
 
 	return statement;
+}
+
+string Edmund::Response(const string& question, const string& answer) {
+
+}
+
+string Edmund::EmergencyAid(const string& inquery, const string& response) { //Gen 2 will make use of an array to check 'const string& inquery' instead of a switch statement.
+	int temp = 0;
+	std:cout << "Please call your local response team before consulting this documentation." << endl;
+	std:cout << "Please select a category." << endl;
+
+std:cout << "1: Fire/n"
+	<< "2: Drowning/n"
+	<< "3: Choking/n"
+	<< "4: Gunshot/n";
+
+std:cin >> temp;
+	switch (temp) {
+	case 1: 
+	std:cout << "Call your local Emergency Response team./n"
+		<< "This app is in development and this function must be written by a professional."
+		<< endl;
+		break;
+	case 2:
+	std:cout << "Call your local Emergency Response team./n"
+		<< "This app is in development and this function must be written by a professional."
+		<< endl;
+		break;
+	case 3:
+	std:cout << "Call your local Emergency Response team./n"
+		<< "This app is in development and this function must be written by a professional."
+		<< endl;
+		break;
+	case 4:
+	std:cout << "Call your local Emergency Response team./n"
+		<< "This app is in development and this function must be written by a professional."
+		<< endl;
+		break;
+	default:
+	std:cout << "Call your local Emergency Response team./n"
+		<< "This app is in development and this function must be written by a professional."
+		<< endl;
+		break;
+	}
 }
 
 wstring Edmund::Conversion(const string& output) {

@@ -1,2 +1,5 @@
 ﻿  EdmundAI.cpp
-  EdmundAI.vcxproj -> I:\projectedmund\Code\ProjectEdmund\Debug\EdmundAI.exe
+i:\projectedmund\code\projectedmund\edmundai\edmundstats.cpp(16): error C2653: 'boost': is not a class or namespace name
+i:\projectedmund\code\projectedmund\edmundai\edmundstats.cpp(16): error C2871: 'network': a namespace with this name does not exist
+i:\projectedmund\code\projectedmund\edmundai\edmundstats.cpp(17): error C2653: 'boost': is not a class or namespace name
+i:\projectedmund\code\projectedmund\edmundai\edmundstats.cpp(17): error C2871: 'http': a namespace with this name does not exist
